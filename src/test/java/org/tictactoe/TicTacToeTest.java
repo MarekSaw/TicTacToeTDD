@@ -56,6 +56,17 @@ class TicTacToeTest {
                 .isEqualTo("No winner");
     }
 
+    @Test
+    public void whenPlayWholeHorizontalLineThenWinner(){
+        ticTacToe.play(1,1);
+        ticTacToe.play(1,2);
+        ticTacToe.play(2,1);
+        ticTacToe.play(2,2);
+        String actual = ticTacToe.play(3,1);
+
+        assertThat(actual)
+                .isEqualTo("X is the winner");
+    }
 
 
 }
