@@ -42,5 +42,20 @@ class TicTacToeTest {
                 .isEqualTo('X');
     }
 
+    @Test
+    public void givenLastTurnWhenNextPlayerThenO(){
+        ticTacToe.play(1,1);
+        assertThat(ticTacToe.nextPlayer())
+                .isEqualTo('O');
+    }
+
+    @Test
+    public void whenPlayThenNoWinner(){
+        String actual = ticTacToe.play(1,1);
+        assertThat(actual)
+                .isEqualTo("No winner");
+    }
+
+
 
 }
