@@ -28,4 +28,11 @@ class TicTacToeTest {
                 .isInstanceOf(RuntimeException.class);
     }
 
+    @Test
+    public void whenIsPutOnAssignedField(){
+        ticTacToe.play(2,2);
+        assertThatThrownBy(() -> ticTacToe.play(2,2))
+                .isInstanceOf(RuntimeException.class);
+    }
+
 }
