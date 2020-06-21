@@ -7,20 +7,24 @@ public class TicTacToe {
 
     public void play(int X, int Y){
 
-        if(X < 1 || X > 3){
+        checkAxis(X);
+        checkAxis(Y);
+        setBox(X, Y);
+
+    }
+
+    public void checkAxis(int axis){
+        if(axis < 1 || axis > 3){
             throw new RuntimeException("X is outside board");
-        } else if(Y < 1 || Y > 3){
-            throw new RuntimeException("Y is outside board");
         }
+    }
+
+    private void setBox(int X, int Y) {
         if(board[X-1][Y-1] != '\0'){
             throw new RuntimeException("Box is occupied");
         }else{
             board[X-1][Y-1] = 'X';
         }
-
-
-
-
     }
 
 
