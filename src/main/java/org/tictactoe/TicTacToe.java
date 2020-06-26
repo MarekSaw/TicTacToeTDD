@@ -1,11 +1,49 @@
 package org.tictactoe;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class TicTacToe {
     private Character[][] board =  {{'\0','\0','\0'},
                                     {'\0','\0','\0'},
                                     {'\0','\0','\0'}};
     private char lastPlayer = '\0';
-    
+
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.introduction();
+        String status = ticTacToe.play(scanner.nextInt(),scanner.nextInt());
+        ticTacToe.showBoard();
+
+
+    }
+
+    public void introduction(){
+        System.out.println("Witaj w grze Kółko i Krzyżyk!");
+        System.out.println("Plansza do gry wygląda następująco:");
+        System.out.println( "Y-------------\n" +
+                            "3|   |   |   |\n" +
+                           // "--------------\n" +
+                            "2|   |   |   |\n" +
+                           // "--------------\n" +
+                            "1|   |   |   |\n" +
+                            "+--1---2---3-X");
+        System.out.println("Pole wybierasz wpisując współrzędne X oraz Y oddzielone spacją");
+        System.out.println("Aby rozpocząć podaj współrzędne");
+    }
+
+    public void showBoard(){
+        System.out.println("Y-------------");
+        for(int i = 2; i >= 0; i--){
+            System.out.print(i+1+"|");
+            for(int j = 0; j < 3; j++){
+                System.out.print(" "+board[j][i]+" |");
+            }
+            System.out.println();
+        }
+        System.out.println("+--1---2---3-X");
+    }
 
     public String play(int X, int Y){
         checkAxis(X);
