@@ -1,6 +1,7 @@
 package org.tictactoe;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -43,6 +44,15 @@ public class TicTacToe {
             System.out.println();
         }
         System.out.println("+--1---2---3-X");
+    }
+
+    public void chooseSign(char sign){
+        System.out.println("Wybierz swój znak wpisując X lub O");
+        if(sign != 'X' && sign != 'O'){
+            throw new RuntimeException("Wrong input");
+        }else if(sign == 'O'){
+            lastPlayer = 'X';
+        }
     }
 
     public String play(int X, int Y){

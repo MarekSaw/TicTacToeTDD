@@ -120,6 +120,12 @@ class TicTacToeTest {
                 .isEqualTo("Draw!");
     }
 
+    @Test
+    public void whenChooseToPlayAsOThenO(){
+        ticTacToe.chooseSign('O');
+        assertThat(ticTacToe.nextPlayer())
+                .isEqualTo('O');
+    }
 
 
 }
