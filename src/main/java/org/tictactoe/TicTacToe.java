@@ -5,13 +5,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe {
+    private static Scanner scanner = new Scanner(System.in);
     private Character[][] board =  {{'\0','\0','\0'},
                                     {'\0','\0','\0'},
                                     {'\0','\0','\0'}};
     private char lastPlayer = '\0';
 
     public static void main(String[] args){
-        Scanner scanner = new Scanner(System.in);
+
         TicTacToe ticTacToe = new TicTacToe();
         ticTacToe.introduction();
         String status = ticTacToe.play(scanner.nextInt(),scanner.nextInt());
@@ -31,7 +32,9 @@ public class TicTacToe {
                             "1|   |   |   |\n" +
                             "+--1---2---3-X");
         System.out.println("Pole wybierasz wpisując współrzędne X oraz Y oddzielone spacją");
-        System.out.println("Aby rozpocząć podaj współrzędne");
+        System.out.println("Wybierz swój znak wpisując X lub O");
+        chooseSign(scanner.nextLine().charAt(0));
+        System.out.println("Aby rozpocząć podaj współrzedne");
     }
 
     public void showBoard(){
@@ -47,7 +50,6 @@ public class TicTacToe {
     }
 
     public void chooseSign(char sign){
-        System.out.println("Wybierz swój znak wpisując X lub O");
         if(sign != 'X' && sign != 'O'){
             throw new RuntimeException("Wrong input");
         }else if(sign == 'O'){
