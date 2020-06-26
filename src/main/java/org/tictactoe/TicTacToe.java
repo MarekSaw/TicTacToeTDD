@@ -1,6 +1,6 @@
 package org.tictactoe;
 
-import java.util.Arrays;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,8 +16,19 @@ public class TicTacToe {
         TicTacToe ticTacToe = new TicTacToe();
         ticTacToe.introduction();
         String status = ticTacToe.play(scanner.nextInt(),scanner.nextInt());
+        ticTacToe.playAi();
         ticTacToe.showBoard();
 
+        while (status.equals("No winner")){
+            status = ticTacToe.play(scanner.nextInt(),scanner.nextInt());
+            if(!status.equals("No winner")){
+                ticTacToe.showBoard();
+                break;
+            }
+            status = ticTacToe.playAi();
+            ticTacToe.showBoard();
+        }
+        System.out.println(status);
 
     }
 
@@ -63,6 +74,18 @@ public class TicTacToe {
         lastPlayer = nextPlayer();
         setBox(X, Y, lastPlayer);
         return checkWinner();
+    }
+
+    public String playAi(){
+        String status;
+        int x = new Random().nextInt(3) + 1;
+        int y = new Random().nextInt(3) + 1;
+        if(board[x-1][y-1] != '\0'){
+            status = playAi();
+        }else {
+            status =  play(x, y);
+        }
+        return status;
     }
 
     private void checkAxis(int axis){
