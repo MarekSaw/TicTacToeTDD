@@ -5,6 +5,7 @@ public class TicTacToe {
                                     {'\0','\0','\0'},
                                     {'\0','\0','\0'}};
     private char lastPlayer = '\0';
+    
 
     public String play(int X, int Y){
         checkAxis(X);
@@ -12,9 +13,6 @@ public class TicTacToe {
         lastPlayer = nextPlayer();
         setBox(X, Y, lastPlayer);
         return checkWinner();
-
-
-
     }
 
     private void checkAxis(int axis){
@@ -40,6 +38,8 @@ public class TicTacToe {
             return checkDiagonalNorthEast();
         }else if(checkDiagonalNorthWest() != null){
             return checkDiagonalNorthWest();
+        }else if(checkDraw() != null){
+            return checkDraw();
         }
         return "No winner";
     }
@@ -82,6 +82,17 @@ public class TicTacToe {
             return lastPlayer + " is the winner";
         }
         return null;
+    }
+
+    private String checkDraw(){
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(board[i][j] == '\0'){
+                    return null;
+                }
+            }
+        }
+        return "Draw!";
     }
 
     public char nextPlayer() {
