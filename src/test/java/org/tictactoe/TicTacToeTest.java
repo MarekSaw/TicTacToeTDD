@@ -68,5 +68,41 @@ class TicTacToeTest {
                 .isEqualTo("X is the winner");
     }
 
+    @Test
+    public void whenPlayWholeVerticalLineThenWinner(){
+        ticTacToe.play(1,1);
+        ticTacToe.play(2,1);
+        ticTacToe.play(1,2);
+        ticTacToe.play(2,2);
+        String actual = ticTacToe.play(1,3);
+
+        assertThat(actual)
+                .isEqualTo("X is the winner");
+    }
+
+    @Test
+    public void whenPlayWholeDiagonalNorthEastLineThenWinner(){
+        ticTacToe.play(1,1);
+        ticTacToe.play(2,1);
+        ticTacToe.play(2,2);
+        ticTacToe.play(3,2);
+        String actual = ticTacToe.play(3,3);
+
+        assertThat(actual)
+                .isEqualTo("X is the winner");
+    }
+
+    @Test
+    public void whenPlayWholeDiagonalNorthWestLineThenWinner(){
+        ticTacToe.play(3,1);
+        ticTacToe.play(2,1);
+        ticTacToe.play(2,2);
+        ticTacToe.play(3,2);
+        String actual = ticTacToe.play(1,3);
+
+        assertThat(actual)
+                .isEqualTo("X is the winner");
+    }
+
 
 }

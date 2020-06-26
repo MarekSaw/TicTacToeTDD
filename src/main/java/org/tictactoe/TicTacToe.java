@@ -11,7 +11,7 @@ public class TicTacToe {
         checkAxis(Y);
         lastPlayer = nextPlayer();
         setBox(X, Y, lastPlayer);
-        return checkHorizontal();
+        return checkWinner();
 
 
 
@@ -31,6 +31,19 @@ public class TicTacToe {
         }
     }
 
+    private String checkWinner(){
+        if(checkHorizontal() != null){
+            return checkHorizontal();
+        }else if(checkVertical() != null){
+            return checkVertical();
+        }else if(checkDiagonalNorthEast() != null){
+            return checkDiagonalNorthEast();
+        }else if(checkDiagonalNorthWest() != null){
+            return checkDiagonalNorthWest();
+        }
+        return "No winner";
+    }
+
     private String checkHorizontal(){
         for(int index=0;index<3;index++){
             if(board[0][index] == lastPlayer
@@ -39,7 +52,36 @@ public class TicTacToe {
                 return lastPlayer+" is the winner";
             }
         }
-        return "No winner";
+        return null;
+    }
+
+    private String checkVertical(){
+        for(int index=0;index<3;index++){
+            if(board[index][0] == lastPlayer
+                    && board[index][1] == lastPlayer
+                    && board[index][2] == lastPlayer){
+                return lastPlayer+" is the winner";
+            }
+        }
+        return null;
+    }
+
+    private String checkDiagonalNorthEast() {
+        if (board[0][0] == lastPlayer
+                && board[1][1] == lastPlayer
+                && board[2][2] == lastPlayer) {
+            return lastPlayer + " is the winner";
+        }
+        return null;
+    }
+
+    private String checkDiagonalNorthWest() {
+        if (board[2][0] == lastPlayer
+                && board[1][1] == lastPlayer
+                && board[0][2] == lastPlayer) {
+            return lastPlayer + " is the winner";
+        }
+        return null;
     }
 
     public char nextPlayer() {
